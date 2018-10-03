@@ -30,7 +30,14 @@ class Date {
    *  @return true if and only if the input year is a leap year.
    */
   public static boolean isLeapYear(int year) {
-    return true;                        // replace this line with your solution
+    if (year % 400 == 0) {
+      return true;
+    }else if (year % 100 == 0){
+      return false;
+    }else if (year % 4 == 0){
+      return true;
+    }
+    return false;
   }
 
   /** Returns the number of days in a given month.
@@ -93,6 +100,8 @@ class Date {
   }
 
   public static void main(String[] argv) {
+    //Boolean i = isLeapYear(2000);
+
     System.out.println("\nTesting constructors.");
     Date d1 = new Date(1, 1, 1);
     System.out.println("Date should be 1/1/1: " + d1);
