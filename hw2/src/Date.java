@@ -46,7 +46,31 @@ class Date {
    *  @return the number of days in the given month.
    */
   public static int daysInMonth(int month, int year) {
-    return 0;                           // replace this line with your solution
+    int numberOfDay = 0;
+    switch (month){
+      case 2:
+      if (isLeapYear(year)){
+        numberOfDay = 29;
+      }else{
+        numberOfDay = 28;
+      }break;
+      case 4:
+      case 6:
+      case 9:
+      case 11:
+        numberOfDay = 30;
+        break;
+      case 1:
+      case 3:
+      case 5:
+      case 7:
+      case 8:
+      case 10:
+      case 12:
+        numberOfDay = 31;
+        break;
+    }
+    return numberOfDay;
   }
 
   /** Checks whether the given date is valid.
@@ -55,7 +79,10 @@ class Date {
    *  Years prior to A.D. 1 are NOT valid.
    */
   public static boolean isValidDate(int month, int day, int year) {
-    return true;                        // replace this line with your solution
+    if (year >= 1 && month >= 0 && month <= 12 && day >= 0 && day <= daysInMonth(month, year)){
+      return true;
+    }
+    return false;                        // replace this line with your solution
   }
 
   /** Returns a string representation of this date in the form month/day/year.
@@ -101,7 +128,8 @@ class Date {
 
   public static void main(String[] argv) {
     //Boolean i = isLeapYear(2000);
-
+    //int d = daysInMonth(2,2020);
+    Boolean yon = isValidDate(12, 12, 2018);
     System.out.println("\nTesting constructors.");
     Date d1 = new Date(1, 1, 1);
     System.out.println("Date should be 1/1/1: " + d1);
