@@ -100,14 +100,26 @@ class Date {
    *  @return true if and only if this Date is before d. 
    */
   public boolean isBefore(Date d) {
-    return true;                        // replace this line with your solution
+      if (this.year < d.year) {
+          return true;
+      }else if (this.year == d.day && this.month < d.month) {
+          return true;
+      }else if (this.year == d.day && this.month == d.month && this.day < d.day){
+          return true;
+      }return false;
   }
 
   /** Determines whether this Date is after the Date d.
    *  @return true if and only if this Date is after d. 
    */
   public boolean isAfter(Date d) {
-    return true;                        // replace this line with your solution
+      if (this.year > d.year) {
+          return true;
+      }else if (this.year == d.day && this.month > d.month) {
+          return true;
+      }else if (this.year == d.day && this.month == d.month && this.day > d.day){
+          return true;
+      }return false;
   }
 
   /** Returns the number of this Date in the year.
