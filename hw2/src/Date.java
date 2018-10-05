@@ -5,7 +5,9 @@ import java.io.*;
 class Date {
 
   /* Put your private data fields here. */
-
+    private int month;
+    private int day;
+    private int year;
   /** Constructs a date with the given month, day and year.   If the date is
    *  not valid, the entire program will halt with an error message.
    *  @param month is a month, numbered in the range 1...12.
@@ -13,6 +15,15 @@ class Date {
    *  @param year is the year in question, with no digits omitted.
    */
   public Date(int month, int day, int year) {
+      if (isValidDate(month, day, year)){
+          this.month = month;
+          this.day = day;
+          this.year = year;
+      }else{
+          System.out.println("The date is INVALID");
+          System.exit(0);
+      }
+
 
   }
 
@@ -46,31 +57,21 @@ class Date {
    *  @return the number of days in the given month.
    */
   public static int daysInMonth(int month, int year) {
-    int numberOfDay = 0;
     switch (month){
       case 2:
       if (isLeapYear(year)){
-        numberOfDay = 29;
+          return 29;
       }else{
-        numberOfDay = 28;
-      }break;
+          return 28;
+      }
       case 4:
       case 6:
       case 9:
       case 11:
-        numberOfDay = 30;
-        break;
-      case 1:
-      case 3:
-      case 5:
-      case 7:
-      case 8:
-      case 10:
-      case 12:
-        numberOfDay = 31;
-        break;
+          return 30;
+      default:
+          return 31;
     }
-    return numberOfDay;
   }
 
   /** Checks whether the given date is valid.
@@ -82,7 +83,7 @@ class Date {
     if (year >= 1 && month >= 0 && month <= 12 && day >= 0 && day <= daysInMonth(month, year)){
       return true;
     }
-    return false;                        // replace this line with your solution
+    return false;
   }
 
   /** Returns a string representation of this date in the form month/day/year.
@@ -91,7 +92,8 @@ class Date {
    *  @return a String representation of this date.
    */
   public String toString() {
-    return "stuff";                     // replace this line with your solution
+      String stuff = month + "/" + day + "/"+ year;
+    return "stuff";
   }
 
   /** Determines whether this Date is before the Date d.
