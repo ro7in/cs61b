@@ -34,8 +34,20 @@ class Date {
    *  a valid date, the program halts with an error message.
    */
   public Date(String s) {
-
+      String[] temp = s.split("/");
+      int m = Integer.parseInt(temp[0]);
+      int d = Integer.parseInt(temp[1]);
+      int y = Integer.parseInt(temp[2]);
+      if (isValidDate(m,d,y)){
+          this.month = m;
+          this.year = y;
+          this.day = d;
+      }else{
+          System.out.println("The date is INVALID");
+          System.exit(0);
+      }
   }
+
 
   /** Checks whether the given year is a leap year.
    *  @return true if and only if the input year is a leap year.
@@ -93,29 +105,27 @@ class Date {
    */
   public String toString() {
       String stuff = month + "/" + day + "/"+ year;
-    return "stuff";
+    return stuff;
   }
 
   /** Determines whether this Date is before the Date d.
-   *  @return true if and only if this Date is before d. 
+   *  @return true if and only if this Date is before d.
    */
   public boolean isBefore(Date d) {
       if (this.year < d.year) {
           return true;
-      }else if (this.year == d.day && this.month < d.month) {
+      }else if (this.year == d.year && this.month < d.month) {
           return true;
-      }else if (this.year == d.day && this.month == d.month && this.day < d.day){
+      }else if (this.year == d.year && this.month == d.month && this.day < d.day){
           return true;
       }return false;
   }
 
   /** Determines whether this Date is after the Date d.
-   *  @return true if and only if this Date is after d. 
+   *  @return true if and only if this Date is after d.
    */
   public boolean isAfter(Date d) {
-      if (isBefore(d)) {
-          return false;
-      }return true;
+      return d.isBefore(this);
   }
 
 
@@ -149,16 +159,12 @@ class Date {
               } else {
                   diff += 365;
               }
-              diff = diff + this.dayInYear();
-          }
+          }diff = diff + this.dayInYear();
       }
       return diff;
   }
 
   public static void main(String[] argv) {
-    //Boolean i = isLeapYear(2000);
-    //int d = daysInMonth(2,2020);
-        //= new Date(1,1,2018);
     Boolean yon = isValidDate(12, 12, 2018);
     System.out.println("\nTesting constructors.");
     Date d1 = new Date(1, 1, 1);
@@ -183,38 +189,38 @@ class Date {
     /* I recommend you write code to test the isLeapYear function! */
 
     System.out.println("\nTesting before and after.");
-    System.out.println(d2 + " after " + d1 + " should be true: " + 
+    System.out.println(d2 + " after " + d1 + " should be true: " +
                        d2.isAfter(d1));
-    System.out.println(d3 + " after " + d2 + " should be true: " + 
+    System.out.println(d3 + " after " + d2 + " should be true: " +
                        d3.isAfter(d2));
-    System.out.println(d1 + " after " + d1 + " should be false: " + 
+    System.out.println(d1 + " after " + d1 + " should be false: " +
                        d1.isAfter(d1));
-    System.out.println(d1 + " after " + d2 + " should be false: " + 
+    System.out.println(d1 + " after " + d2 + " should be false: " +
                        d1.isAfter(d2));
-    System.out.println(d2 + " after " + d3 + " should be false: " + 
+    System.out.println(d2 + " after " + d3 + " should be false: " +
                        d2.isAfter(d3));
 
-    System.out.println(d1 + " before " + d2 + " should be true: " + 
+    System.out.println(d1 + " before " + d2 + " should be true: " +
                        d1.isBefore(d2));
-    System.out.println(d2 + " before " + d3 + " should be true: " + 
+    System.out.println(d2 + " before " + d3 + " should be true: " +
                        d2.isBefore(d3));
-    System.out.println(d1 + " before " + d1 + " should be false: " + 
+    System.out.println(d1 + " before " + d1 + " should be false: " +
                        d1.isBefore(d1));
-    System.out.println(d2 + " before " + d1 + " should be false: " + 
+    System.out.println(d2 + " before " + d1 + " should be false: " +
                        d2.isBefore(d1));
-    System.out.println(d3 + " before " + d2 + " should be false: " + 
+    System.out.println(d3 + " before " + d2 + " should be false: " +
                        d3.isBefore(d2));
 
     System.out.println("\nTesting difference.");
-    System.out.println(d1 + " - " + d1  + " should be 0: " + 
+    System.out.println(d1 + " - " + d1  + " should be 0: " +
                        d1.difference(d1));
-    System.out.println(d2 + " - " + d1  + " should be 1: " + 
+    System.out.println(d2 + " - " + d1  + " should be 1: " +
                        d2.difference(d1));
-    System.out.println(d3 + " - " + d1  + " should be 2: " + 
+    System.out.println(d3 + " - " + d1  + " should be 2: " +
                        d3.difference(d1));
-    System.out.println(d3 + " - " + d4  + " should be -422: " + 
+    System.out.println(d3 + " - " + d4  + " should be -422: " +
                        d3.difference(d4));
-    System.out.println(d5 + " - " + d4  + " should be 48762: " + 
+    System.out.println(d5 + " - " + d4  + " should be 48762: " +
                        d5.difference(d4));
   }
 }
