@@ -113,14 +113,11 @@ class Date {
    *  @return true if and only if this Date is after d. 
    */
   public boolean isAfter(Date d) {
-      if (this.year > d.year) {
-          return true;
-      }else if (this.year == d.day && this.month > d.month) {
-          return true;
-      }else if (this.year == d.day && this.month == d.month && this.day > d.day){
-          return true;
-      }return false;
+      if (isBefore(d)) {
+          return false;
+      }return true;
   }
+
 
   /** Returns the number of this Date in the year.
    *  @return a number n in the range 1...366, inclusive, such that this Date
@@ -128,7 +125,11 @@ class Date {
    *  year.)
    */
   public int dayInYear() {
-    return 0;                           // replace this line with your solution
+      int n = 0;
+      for (int i = 0; i < this.month; i++) {
+          n += daysInMonth(i, this.year);
+      } n += this.day;
+      return n;
   }
 
   /** Determines the difference in days between d and this Date.  For example,
@@ -137,12 +138,27 @@ class Date {
    *  @return the difference in days between d and this date.
    */
   public int difference(Date d) {
-    return 0;                           // replace this line with your solution
+      int diff =0;
+      if (this.isBefore(d)){
+          return -d.difference(this);
+      } else if (this.isAfter(d)) {
+          diff -= d.dayInYear();
+          for (int i = d.year; i < this.year; i++) {
+              if (isLeapYear(i)) {
+                  diff += 366;
+              } else {
+                  diff += 365;
+              }
+              diff = diff + this.dayInYear();
+          }
+      }
+      return diff;
   }
 
   public static void main(String[] argv) {
     //Boolean i = isLeapYear(2000);
     //int d = daysInMonth(2,2020);
+        //= new Date(1,1,2018);
     Boolean yon = isValidDate(12, 12, 2018);
     System.out.println("\nTesting constructors.");
     Date d1 = new Date(1, 1, 1);
