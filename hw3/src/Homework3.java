@@ -19,8 +19,34 @@ public class Homework3 {
    **/
 
   public static void smoosh(int[] ints) {
-    // Fill in your solution here.  (Ours is twelve lines long, not counting
-    // blank lines or lines already present in this file.)
+      int i = 0, j = 1, k = 1;
+      while (j < ints.length) {
+          if (ints[i] != ints[j]) {
+              ints[k] = ints[j];
+              i = j;
+              j += 1;
+              k += 1;
+          }else {
+              j += 1;
+          }
+      }
+      for (int l = k; l < ints.length; l++) {
+          ints[l] = -1;
+      }
+
+      /**int lastInt = ints[0];
+      int j = 1;  // number of valid items.
+      for (int i = 1; i < ints.length; i++) {
+          if (ints[i] != lastInt) {
+              ints[j] = ints[i];
+              j++;
+          }
+          lastInt = ints[i];
+      }
+      // fill the rest with -1
+      for (int k = j; k < ints.length; k++) {
+          ints[k] = -1;
+      }*/
   }
 
   /**
@@ -50,6 +76,8 @@ public class Homework3 {
     System.out.println("Let's smoosh arrays!\n");
 
     int[] test1 = {3, 7, 7, 7, 4, 5, 5, 2, 0, 8, 8, 8, 8, 5};
+    //int[] test1 = {2, 0, 8, 8, 8, 8, 5};
+
     System.out.println("smooshing " + stringInts(test1) + ":");
     smoosh(test1);
     result = stringInts(test1);
