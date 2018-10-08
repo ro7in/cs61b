@@ -30,8 +30,12 @@ public class Homework3 {
               j += 1;
           }
       }
-      for (int l = k; l < ints.length; l++) {
+      /**for (int l = k; l < ints.length; l++) {
           ints[l] = -1;
+      }*/
+      while (k < ints.length) {
+          ints[k] = -1;
+          k += 1;
       }
 
       /**int lastInt = ints[0];

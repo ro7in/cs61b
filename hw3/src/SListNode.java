@@ -29,7 +29,6 @@ class SListNode {
    *  item "obj".
    */
 
-  SListNode(Object obj) {
-    this(obj, null);
+  SListNode(Object obj) { this(obj, null);
   }
 }

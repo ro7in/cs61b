@@ -95,7 +95,7 @@ public class SList {
   }
 
   /**
-   *  squish() takes this list and, wherever two or more consecutive items are
+   *  squish() takes this list and, wherever two or more z items are
    *  equals(), it removes duplicate nodes so that only one consecutive copy
    *  remains.  Hence, no two consecutive items in this list are equals() upon
    *  completion of the procedure.
@@ -111,7 +111,18 @@ public class SList {
    **/
 
   public void squish() {
-    // Fill in your solution here.  (Ours is eleven lines long.)
+      SListNode preNode = head;
+      SListNode curNode = head.next;
+
+      while (head != null) {
+          if (preNode.item.equals(curNode.item)) {
+              preNode.next = curNode.next;
+              this.size -= 1;
+          } else {
+              preNode = curNode;
+          }curNode = curNode.next;
+      }
+
   }
 
   /**
@@ -126,7 +137,14 @@ public class SList {
    **/
 
   public void twin() {
-    // Fill in your solution here.  (Ours is seven lines long.)
+      SListNode curNode = head;
+
+      while (head != null) {
+          SListNode twinNode = new SListNode(curNode.item, curNode.next);
+          curNode.next = twinNode;
+          curNode = twinNode.next;
+          size += 1;
+      }
   }
 
   /**
