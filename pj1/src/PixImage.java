@@ -216,10 +216,37 @@ public class PixImage {
       if (numIterations <= 0) {
           return this;
       }
+      int[] a = {1, 0};
+      int[] b = {-1, 0};
+      int[] c = {-1, 0, 1};
+
+      int num;
+
+      for (int i = 0; i < width; i++) {
+          int[] ind_line = new int[0];
+          if (i == 0) {
+              ind_line = b;
+          } else if (i > 0 && i < (height - 1)) {
+              ind_line = c;
+          } else if (i == height - 1) {
+              ind_line = a;
+          }
+          int[] ind_row = new int[0];
+          for (int j = 0; j < height; j++) {
+              if (j == 0){
+                  ind_row = a;
+              } else if (j > 0 && j < (height - 1)) {
+                  ind_row = c;
+              } else if (j == height -1) {
+                  ind_row = b;
+              }
+
+              num = ind_line.length * ind_row.length;
+          }
+      }
 
       PixImage pixImage = new PixImage(this.width,this.height);
-
-
+      return this;
 
   }
 
@@ -358,7 +385,7 @@ public class PixImage {
     System.out.println("Testing getWidth/getHeight on a 3x3 image.  " +
             "Input image:");
     System.out.print(image1);
-    /**doTest(image1.getWidth() == 3 && image1.getHeight() == 3,
+    doTest(image1.getWidth() == 3 && image1.getHeight() == 3,
      "Incorrect image width and height.");
 
      System.out.println("Testing blurring on a 3x3 image.");
@@ -367,7 +394,7 @@ public class PixImage {
      { 81, 137, 187 },
      { 120, 164, 218 } })),
      "Incorrect box blur (1 rep):\n" + image1.boxBlur(1));
-     doTest(image1.boxBlur(2).equals(
+     /**doTest(image1.boxBlur(2).equals(
      array2PixImage(new int[][] { { 91, 118, 146 },
      { 108, 134, 161 },
      { 125, 151, 176 } })),
