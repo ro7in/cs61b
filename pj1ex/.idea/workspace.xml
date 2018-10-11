@@ -2,43 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cc64c14-0a72-4cf1-a974-595fd5b7b1ec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../hw3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hw3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/.idea/vcs.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pj1/src/SinglePixel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pj1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pj1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/TIFF6.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/baby.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/black.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/data.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/engine.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/feathers.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/flower.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/highcontrast.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/jai_codec.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/jai_core.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/readme.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/reggie.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/out/production/pj1/woman.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/Blur.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/ImageUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/PixImage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/RunIterator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/RunLengthEncoding.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/Sobel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/TIFF6.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/TIFFEncoder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/baby.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/black.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/data.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/engine.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/feathers.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/flower.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/highcontrast.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/jai_codec.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/jai_core.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/readme.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/reggie.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pj1/src/woman.tiff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pj1/src/PixImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pj1/src/PixImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -148,7 +115,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539231991173" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539232306851" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -191,15 +158,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1539117503325</updated>
-      <workItem from="1539117508462" duration="9857000" />
+      <workItem from="1539117508462" duration="10102000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9857000" />
+    <option name="totallyTimeSpent" value="10102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="402" y="23" width="1463" height="1008" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
