@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e796b7eb-64b5-48e3-8cd2-b1da5ca74660" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../pj1/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pj1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pj1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pj1/src/PixImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pj1/src/PixImage.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,7 +16,7 @@
     <session id="1163113533">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.7" value="1" />
@@ -59,8 +59,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SListNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+            <state relative-caret-position="409">
+              <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -198,12 +198,12 @@
       <updated>1538929881708</updated>
       <workItem from="1538929887986" duration="17017000" />
       <workItem from="1539010903531" duration="1540000" />
-      <workItem from="1539059997913" duration="410000" />
+      <workItem from="1539059997913" duration="595000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18967000" />
+    <option name="totallyTimeSpent" value="19152000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="488" y="118" width="1197" height="991" extended-state="0" />
@@ -278,8 +278,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SListNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+        <state relative-caret-position="409">
+          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
         </state>
       </provider>
     </entry>
