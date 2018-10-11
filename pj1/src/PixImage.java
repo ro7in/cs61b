@@ -19,7 +19,6 @@ public class PixImage {
   private int width;
   private int height;
   private SinglePixel[][] singlePixels;
-  private Pixel[][] pixels;
 
   /**
    *  Define any variables associated with a PixImage object here.  These
@@ -221,33 +220,46 @@ public class PixImage {
       int[] c = {-1, 0, 1};
 
       int num;
+      PixImage blurPixImage= new PixImage(this.width,this.height);
 
-      for (int i = 0; i < width; i++) {
+      for (int i = 0; i < height; i++) {
           int[] ind_line = new int[0];
           if (i == 0) {
-              ind_line = b;
+              ind_line = a;
           } else if (i > 0 && i < (height - 1)) {
               ind_line = c;
           } else if (i == height - 1) {
-              ind_line = a;
+              ind_line = b;
           }
           int[] ind_row = new int[0];
-          for (int j = 0; j < height; j++) {
+          for (int j = 0; j < width; j++) {
               if (j == 0){
                   ind_row = a;
-              } else if (j > 0 && j < (height - 1)) {
+              } else if (j > 0 && j < (width - 1)) {
                   ind_row = c;
-              } else if (j == height -1) {
+              } else if (j == width -1) {
                   ind_row = b;
               }
 
               num = ind_line.length * ind_row.length;
+              int sumRed = 0;
+              int sumGreen = 0;
+              int sumBlue = 0;
+              for (int line: ind_line) {
+                  for (int row: ind_row) {
+                      sumRed += singlePixels[i + line][j + row].getred();
+                      sumGreen += singlePixels[i + line][j + row].getgreen();
+                      sumBlue += singlePixels[i + line][j + row].getblue();
+                  }
+              }
+
+              blurPixImage.singlePixels[i][j].setred((short) (sumRed / num));
+              blurPixImage.singlePixels[i][j].setgreen((short) (sumGreen / num));
+              blurPixImage.singlePixels[i][j].setblue((short) (sumBlue / num));
+
           }
       }
-
-      PixImage pixImage = new PixImage(this.width,this.height);
-      return this;
-
+      return blurPixImage.boxBlur(--numIterations);
   }
 
   /**
