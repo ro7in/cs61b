@@ -38,7 +38,7 @@ public class PixImage {
    */
   public PixImage(int width, int height) {
     if (width < 0 || height < 0){
-      System.out.println("Witdth or height cannot be negative!!!");
+      System.out.println("Width or height cannot be negative!!!");
     }
     this.width = width;
     this.height = height;
@@ -165,20 +165,20 @@ public class PixImage {
     testStr = "The width is: " + this.width + "." + " The height is: " + this.height + ".";
     for (int i = 0; i < width; i++) {
       for (int j = 0; j < height; j++) {
-        testRed += this.singlePixels[i][j].getred();
+        testRed += " " + this.singlePixels[i][j].getred();
       }
     }
     for (int i = 0; i < width; i++) {
       for (int j = 0; j < height; j++) {
-        testGreen += this.singlePixels[i][j].getgreen();
+        testGreen += " " + this.singlePixels[i][j].getgreen();
       }
     }
     for (int i = 0; i < width; i++) {
       for (int j = 0; j < height; j++) {
-        testBlue += this.singlePixels[i][j].getblue();
+        testBlue += " " + this.singlePixels[i][j].getblue();
       }
     }
-    System.out.println(testStr + testRed + testGreen + testBlue);
+    System.out.println(testStr + "\n" + testRed + "\n" + testGreen + "\n" + testBlue);
     return "";
   }
 
@@ -213,8 +213,14 @@ public class PixImage {
    */
   public PixImage boxBlur(int numIterations) {
     // Replace the following line with your solution.
-    SinglePixel[][] blurPixels = new SinglePixel[width][height];
-    return this;
+      if (numIterations <= 0) {
+          return this;
+      }
+
+      PixImage pixImage = new PixImage(this.width,this.height);
+
+
+
   }
 
   /**
