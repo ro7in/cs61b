@@ -305,50 +305,38 @@ public class PixImage {
   public PixImage sobelEdges() {
     // Replace the following line with your solution.
       PixImage sobelPixImage= new PixImage(this.width,this.height);
-      int[] a = {1, 0};
-      int[] b = {-1, 0};
-      int[] c = {-1, 0, 1};
+      int[] index = {-1, 0, 1};
       int[][] convX=new int[][]{{1,0,-1},{2,0,-2},{1,0,-1}};
       int[][] convY=new int[][]{{1,2,1},{0,0,0},{-1,-2,-1}};
       long[][] energyG = new long[width][height];
 
       for (int i = 0; i < height; i++) {
-          int[] ind_line = new int[0];
-          if (i == 0) {
-              ind_line = a;
-          } else if (i > 0 && i < (height - 1)) {
-              ind_line = c;
-          } else if (i == height - 1) {
-              ind_line = b;
-          }
-          int[] ind_row = new int[0];
           for (int j = 0; j < width; j++) {
-              if (j == 0) {
-                  ind_row = a;
-              } else if (j > 0 && j < (width - 1)) {
-                  ind_row = c;
-              } else if (j == width - 1) {
-                  ind_row = b;
-              }
               int gA_red[][] = {{0,0,0},{0,0,0,},{0,0,0}};
               int gA_green[][] = {{0,0,0},{0,0,0,},{0,0,0}};
               int gA_blue[][] = {{0,0,0},{0,0,0,},{0,0,0}};
-              for (int line: ind_line){
-                  for (int row: ind_row){
-                      gA_red[1 + line][1 + row] = singlePixels[i + line][j + row].getred();
-                      gA_green[1 + line][1 + row] = singlePixels[i + line][j + row].getgreen();
-                      gA_blue[1 + line][1 + row] = singlePixels[i + line][j + row].getblue();
+              for (int line: index){
+                  for (int row: index){
+                      int rowIndex = i + row;
+                      int lineIndex = j + line;
+                      if (i + row < 0) {
+                          rowIndex = 0;
+                      } else if (i + row > this.height-1) {
+                          rowIndex = this.height-1;
+                      }
+                      if (j + line < 0) {
+                          lineIndex = 0;
+                      } else if (j + line > this.width-1) {
+                          lineIndex = this.width-1;
+                      }
+                      gA_red[1 + row][1 + line] = singlePixels[rowIndex][lineIndex].getred();
+                      gA_green[1 + row][1 + line] = singlePixels[rowIndex][lineIndex].getgreen();
+                      gA_blue[1 + row][1 + line] = singlePixels[rowIndex][lineIndex].getblue();
                   }
               }
               int gX_red = 0, gX_green = 0, gX_blue = 0, gY_red = 0, gY_green = 0, gY_blue = 0;
               for (int p = 0; p < 3; p++) {
                   for (int q = 0; q < 3; q++) {
-                      /**gX_red += gA_red[p][q] * convX[2-p][2-q];
-                      gX_green += gA_red[p][q] * convX[2-p][2-q];
-                      gX_blue += gA_red[p][q] * convX[2-p][2-q];
-                      gY_red += gA_red[p][q] * convY[2-p][2-q];
-                      gY_green += gA_red[p][q] * convY[2-p][2-q];
-                      gY_blue += gA_red[p][q] * convY[2-p][2-q];*/
                       gX_red += gA_red[p][q] * convX[p][q];
                       gX_green += gA_red[p][q] * convX[p][q];
                       gX_blue += gA_red[p][q] * convX[p][q];
