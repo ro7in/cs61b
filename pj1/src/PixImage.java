@@ -304,7 +304,55 @@ public class PixImage {
    */
   public PixImage sobelEdges() {
     // Replace the following line with your solution.
-    return this;
+      PixImage sobelPixImage= new PixImage(this.width,this.height);
+      int[] a = {1, 0};
+      int[] b = {-1, 0};
+      int[] c = {-1, 0, 1};
+
+      for (int i = 0; i < height; i++) {
+          int[] ind_line = new int[0];
+          if (i == 0) {
+              ind_line = a;
+          } else if (i > 0 && i < (height - 1)) {
+              ind_line = c;
+          } else if (i == height - 1) {
+              ind_line = b;
+          }
+          int[] ind_row = new int[0];
+          for (int j = 0; j < width; j++) {
+              if (j == 0) {
+                  ind_row = a;
+              } else if (j > 0 && j < (width - 1)) {
+                  ind_row = c;
+              } else if (j == width - 1) {
+                  ind_row = b;
+              }
+
+              int GA_red[][] = {{0,0,0},{0,0,0,},{0,0,0}};
+              int GA_green[][] = {{0,0,0},{0,0,0,},{0,0,0}};
+              int GA_blue[][] = {{0,0,0},{0,0,0,},{0,0,0}};
+              for (int m = 0; m < 3; m++) {
+                  for (int n = 0; n < 3; n++) {
+                      for (int line: ind_line){
+                          for (int row: ind_row){
+                              GA_red[m + 1 + line][n + 1 + row] = singlePixels[line][row].getred();
+                              GA_green[m + 1 + line][n + 1 + row] = singlePixels[line][row].getgreen();
+                              GA_blue[m + 1 + line][n + 1 + row] = singlePixels[line][row].getblue();
+                          }
+                      }
+
+                  }
+              }
+          }
+      }
+
+
+
+
+
+
+
+    return sobelPixImage;
     // Don't forget to use the method mag2gray() above to convert energies to
     // pixel intensities.
   }
@@ -406,7 +454,7 @@ public class PixImage {
      { 81, 137, 187 },
      { 120, 164, 218 } })),
      "Incorrect box blur (1 rep):\n" + image1.boxBlur(1));
-     /**doTest(image1.boxBlur(2).equals(
+     doTest(image1.boxBlur(2).equals(
      array2PixImage(new int[][] { { 91, 118, 146 },
      { 108, 134, 161 },
      { 125, 151, 176 } })),
@@ -415,7 +463,7 @@ public class PixImage {
      "Incorrect box blur (1 rep + 1 rep):\n" +
      image1.boxBlur(2) + image1.boxBlur(1).boxBlur(1));
 
-     System.out.println("Testing edge detection on a 3x3 image.");
+     /**System.out.println("Testing edge detection on a 3x3 image.");
      doTest(image1.sobelEdges().equals(
      array2PixImage(new int[][] { { 104, 189, 180 },
      { 160, 193, 157 },
