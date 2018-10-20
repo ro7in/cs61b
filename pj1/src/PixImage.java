@@ -222,22 +222,22 @@ public class PixImage {
       int num;
       PixImage blurPixImage= new PixImage(this.width,this.height);
 
-      for (int i = 0; i < height; i++) {
+      for (int i = 0; i < width; i++) {
           int[] ind_line = new int[0];
           if (i == 0) {
               ind_line = a;
-          } else if (i > 0 && i < (height - 1)) {
+          } else if (i > 0 && i < (width - 1)) {
               ind_line = c;
-          } else if (i == height - 1) {
+          } else if (i == width - 1) {
               ind_line = b;
           }
           int[] ind_row = new int[0];
-          for (int j = 0; j < width; j++) {
+          for (int j = 0; j < height; j++) {
               if (j == 0){
                   ind_row = a;
-              } else if (j > 0 && j < (width - 1)) {
+              } else if (j > 0 && j < (height - 1)) {
                   ind_row = c;
-              } else if (j == width -1) {
+              } else if (j == height -1) {
                   ind_row = b;
               }
 
@@ -310,8 +310,8 @@ public class PixImage {
       int[][] convY=new int[][]{{1,2,1},{0,0,0},{-1,-2,-1}};
       long[][] energyG = new long[width][height];
 
-      for (int i = 0; i < height; i++) {
-          for (int j = 0; j < width; j++) {
+      for (int i = 0; i < width; i++) {
+          for (int j = 0; j < height; j++) {
               int gA_red[][] = {{0,0,0},{0,0,0,},{0,0,0}};
               int gA_green[][] = {{0,0,0},{0,0,0,},{0,0,0}};
               int gA_blue[][] = {{0,0,0},{0,0,0,},{0,0,0}};
@@ -321,13 +321,13 @@ public class PixImage {
                       int lineIndex = j + line;
                       if (i + row < 0) {
                           rowIndex = 0;
-                      } else if (i + row > this.height-1) {
-                          rowIndex = this.height-1;
+                      } else if (i + row > this.width-1) {
+                          rowIndex = this.width-1;
                       }
                       if (j + line < 0) {
                           lineIndex = 0;
-                      } else if (j + line > this.width-1) {
-                          lineIndex = this.width-1;
+                      } else if (j + line > this.height-1) {
+                          lineIndex = this.height-1;
                       }
                       gA_red[1 + row][1 + line] = singlePixels[rowIndex][lineIndex].getred();
                       gA_green[1 + row][1 + line] = singlePixels[rowIndex][lineIndex].getgreen();
@@ -443,7 +443,7 @@ public class PixImage {
     PixImage image1 = array2PixImage(new int[][] { { 0, 10, 240 },
             { 30, 120, 250 },
             { 80, 250, 255 } });
-    /**System.out.println("Testing getWidth/getHeight on a 3x3 image.  " +
+    System.out.println("Testing getWidth/getHeight on a 3x3 image.  " +
             "Input image:");
     System.out.print(image1);
     doTest(image1.getWidth() == 3 && image1.getHeight() == 3,
@@ -462,7 +462,7 @@ public class PixImage {
      "Incorrect box blur (2 rep):\n" + image1.boxBlur(2));
      doTest(image1.boxBlur(2).equals(image1.boxBlur(1).boxBlur(1)),
      "Incorrect box blur (1 rep + 1 rep):\n" +
-     image1.boxBlur(2) + image1.boxBlur(1).boxBlur(1));*/
+     image1.boxBlur(2) + image1.boxBlur(1).boxBlur(1));
 
      System.out.println("Testing edge detection on a 3x3 image.");
      doTest(image1.sobelEdges().equals(
@@ -472,7 +472,7 @@ public class PixImage {
      "Incorrect Sobel:\n" + image1.sobelEdges());
 
 
-     /**PixImage image2 = array2PixImage(new int[][] { { 0, 100, 100 },
+     PixImage image2 = array2PixImage(new int[][] { { 0, 100, 100 },
      { 0, 0, 100 } });
      System.out.println("Testing getWidth/getHeight on a 2x3 image.  " +
      "Input image:");
@@ -490,6 +490,6 @@ public class PixImage {
      doTest(image2.sobelEdges().equals(
      array2PixImage(new int[][] { { 122, 143, 74 },
      { 74, 143, 122 } })),
-     "Incorrect Sobel:\n" + image2.sobelEdges());*/
+     "Incorrect Sobel:\n" + image2.sobelEdges());
   }
 }
