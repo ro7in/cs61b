@@ -308,6 +308,9 @@ public class PixImage {
       int[] a = {1, 0};
       int[] b = {-1, 0};
       int[] c = {-1, 0, 1};
+      int[][] convX=new int[][]{{1,0,-1},{2,0,-2},{1,0,-1}};
+      int[][] convY=new int[][]{{1,2,1},{0,0,0},{-1,-2,-1}};
+      long[][] energyG = new long[width][height];
 
       for (int i = 0; i < height; i++) {
           int[] ind_line = new int[0];
@@ -327,31 +330,41 @@ public class PixImage {
               } else if (j == width - 1) {
                   ind_row = b;
               }
-
-              int GA_red[][] = {{0,0,0},{0,0,0,},{0,0,0}};
-              int GA_green[][] = {{0,0,0},{0,0,0,},{0,0,0}};
-              int GA_blue[][] = {{0,0,0},{0,0,0,},{0,0,0}};
-              for (int m = 0; m < 3; m++) {
-                  for (int n = 0; n < 3; n++) {
-                      for (int line: ind_line){
-                          for (int row: ind_row){
-                              GA_red[m + 1 + line][n + 1 + row] = singlePixels[line][row].getred();
-                              GA_green[m + 1 + line][n + 1 + row] = singlePixels[line][row].getgreen();
-                              GA_blue[m + 1 + line][n + 1 + row] = singlePixels[line][row].getblue();
-                          }
-                      }
-
+              int gA_red[][] = {{0,0,0},{0,0,0,},{0,0,0}};
+              int gA_green[][] = {{0,0,0},{0,0,0,},{0,0,0}};
+              int gA_blue[][] = {{0,0,0},{0,0,0,},{0,0,0}};
+              for (int line: ind_line){
+                  for (int row: ind_row){
+                      gA_red[1 + line][1 + row] = singlePixels[i + line][j + row].getred();
+                      gA_green[1 + line][1 + row] = singlePixels[i + line][j + row].getgreen();
+                      gA_blue[1 + line][1 + row] = singlePixels[i + line][j + row].getblue();
                   }
               }
+              int gX_red = 0, gX_green = 0, gX_blue = 0, gY_red = 0, gY_green = 0, gY_blue = 0;
+              for (int p = 0; p < 3; p++) {
+                  for (int q = 0; q < 3; q++) {
+                      /**gX_red += gA_red[p][q] * convX[2-p][2-q];
+                      gX_green += gA_red[p][q] * convX[2-p][2-q];
+                      gX_blue += gA_red[p][q] * convX[2-p][2-q];
+                      gY_red += gA_red[p][q] * convY[2-p][2-q];
+                      gY_green += gA_red[p][q] * convY[2-p][2-q];
+                      gY_blue += gA_red[p][q] * convY[2-p][2-q];*/
+                      gX_red += gA_red[p][q] * convX[p][q];
+                      gX_green += gA_red[p][q] * convX[p][q];
+                      gX_blue += gA_red[p][q] * convX[p][q];
+                      gY_red += gA_red[p][q] * convY[p][q];
+                      gY_green += gA_red[p][q] * convY[p][q];
+                      gY_blue += gA_red[p][q] * convY[p][q];
+                  }
+              }
+              energyG[i][j] = (long)gX_red * (long)gX_red + (long)gY_red * (long)gY_red +
+                      (long)gX_green * (long)gX_green + (long)gY_green * (long)gY_green +
+                      (long)gX_blue * (long)gX_blue + (long)gY_blue * (long)gY_blue;
+              sobelPixImage.singlePixels[i][j].setred(mag2gray(energyG[i][j]));
+              sobelPixImage.singlePixels[i][j].setgreen(mag2gray(energyG[i][j]));
+              sobelPixImage.singlePixels[i][j].setblue(mag2gray(energyG[i][j]));
           }
       }
-
-
-
-
-
-
-
     return sobelPixImage;
     // Don't forget to use the method mag2gray() above to convert energies to
     // pixel intensities.
@@ -442,7 +455,7 @@ public class PixImage {
     PixImage image1 = array2PixImage(new int[][] { { 0, 10, 240 },
             { 30, 120, 250 },
             { 80, 250, 255 } });
-    System.out.println("Testing getWidth/getHeight on a 3x3 image.  " +
+    /**System.out.println("Testing getWidth/getHeight on a 3x3 image.  " +
             "Input image:");
     System.out.print(image1);
     doTest(image1.getWidth() == 3 && image1.getHeight() == 3,
@@ -461,9 +474,9 @@ public class PixImage {
      "Incorrect box blur (2 rep):\n" + image1.boxBlur(2));
      doTest(image1.boxBlur(2).equals(image1.boxBlur(1).boxBlur(1)),
      "Incorrect box blur (1 rep + 1 rep):\n" +
-     image1.boxBlur(2) + image1.boxBlur(1).boxBlur(1));
+     image1.boxBlur(2) + image1.boxBlur(1).boxBlur(1));*/
 
-     /**System.out.println("Testing edge detection on a 3x3 image.");
+     System.out.println("Testing edge detection on a 3x3 image.");
      doTest(image1.sobelEdges().equals(
      array2PixImage(new int[][] { { 104, 189, 180 },
      { 160, 193, 157 },
@@ -471,7 +484,7 @@ public class PixImage {
      "Incorrect Sobel:\n" + image1.sobelEdges());
 
 
-     PixImage image2 = array2PixImage(new int[][] { { 0, 100, 100 },
+     /**PixImage image2 = array2PixImage(new int[][] { { 0, 100, 100 },
      { 0, 0, 100 } });
      System.out.println("Testing getWidth/getHeight on a 2x3 image.  " +
      "Input image:");
