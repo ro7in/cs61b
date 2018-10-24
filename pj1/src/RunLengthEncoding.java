@@ -24,6 +24,10 @@
 import java.util.Iterator;
 
 public class RunLengthEncoding implements Iterable {
+    private int width;
+    private int height;
+    private run head;
+    private run tail;
 
   /**
    *  Define any variables associated with a RunLengthEncoding object here.
@@ -47,6 +51,11 @@ public class RunLengthEncoding implements Iterable {
    */
 
   public RunLengthEncoding(int width, int height) {
+      if (width < 0 || height < 0){
+          System.out.println("Width or height cannot be negative!!!");
+      }
+      this.width = width;
+      this.height = height;
     // Your solution here.
   }
 
@@ -73,7 +82,27 @@ public class RunLengthEncoding implements Iterable {
 
   public RunLengthEncoding(int width, int height, int[] red, int[] green,
                            int[] blue, int[] runLengths) {
-    // Your solution here.
+      if (red.length == green.length && green.length == blue.length &&
+      blue.length == width * height){
+          this.head = new run();
+          this.tail = this.head;
+          this.head.red = (short)red[0];
+          this.head.green = (short)green[0];
+          this.head.blue = (short)blue[0];
+          this.head.runlength = runLengths[0];
+          this.tail.next = new run();
+          this.tail.next.prev = this.tail;
+          this.tail = this.tail.next;
+
+          for (int i = 0; i < red.length; i++) {
+              this.head.red = (short)red[i];
+              this.head.green = (short)green[i];
+              this.head.blue = (short)blue[i];
+              this.head.runlength = runLengths[i];
+          }
+      } else {
+          System.out.println("The length of the input does't match.");
+      }
   }
 
   /**
@@ -85,7 +114,7 @@ public class RunLengthEncoding implements Iterable {
 
   public int getWidth() {
     // Replace the following line with your solution.
-    return 1;
+    return this.width;
   }
 
   /**
@@ -96,7 +125,7 @@ public class RunLengthEncoding implements Iterable {
    */
   public int getHeight() {
     // Replace the following line with your solution.
-    return 1;
+    return this.height;
   }
 
   /**
@@ -121,7 +150,7 @@ public class RunLengthEncoding implements Iterable {
    */
   public PixImage toPixImage() {
     // Replace the following line with your solution.
-    return new PixImage(1, 1);
+    return new PixImage(this.width, this.height);
   }
 
   /**

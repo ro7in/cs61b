@@ -32,10 +32,12 @@ import java.util.NoSuchElementException;
 @SuppressWarnings("rawtypes")
 public class RunIterator implements Iterator {
 
+
   /**
    *  Define any variables associated with a RunIterator object here.
    *  These variables MUST be private.
    */
+    private run iteratorPointer;
 
 
 
@@ -54,7 +56,8 @@ public class RunIterator implements Iterator {
   // constructor that you want so that your RunLengthEncoding.iterator()
   // implementation can construct a RunIterator that points to the first run of
   // the encoding.
-  RunIterator() {
+  RunIterator(run firstRun) {
+      iteratorPointer = firstRun;
     // Your solution here.  You may add parameters to the method signature.
   }
 
@@ -65,8 +68,9 @@ public class RunIterator implements Iterator {
    *  @return true if the iterator has more elements.
    */
   public boolean hasNext() {
-    // Replace the following line with your solution.
-    return false;
+      if (this.iteratorPointer == null) {
+          return false;
+      }return true;
   }
 
   /**
